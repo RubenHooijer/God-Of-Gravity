@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://axe.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Score.tscn" type="PackedScene" id=4]
+[ext_resource path="res://bin/UIManager.gdns" type="Script" id=5]
+
+[node name="main" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource( 1 )]
+position = Vector2( 511.807, 302.207 )
+scale = Vector2( 1.34349, 1.34349 )
+frame = 4
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 615.823, 272.352 )
+scale = Vector2( 0.2, 0.2 )
+Extents = Vector2( 15, 22.5 )
+
+[node name="Axe" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 302.38, 230.451 )
+scale = Vector2( 2, 2 )
+Speed_Increament = 2.0
+Extents = Vector2( 64, 64 )
+
+[node name="SpeedUpTimer" type="Timer" parent="Axe"]
+wait_time = 10.0
+autostart = true
+
+[node name="Score" parent="." instance=ExtResource( 4 )]
+margin_right = 592.0
+
+[node name="UIManager" type="Node2D" parent="."]
+script = ExtResource( 5 )
+ScenePath = "res://menu.tscn"
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 3.0
+[connection signal="_on_death" from="Player" to="EndTimer" method="start"]
+[connection signal="_on_death" from="Player" to="Score" method="stopCounting"]
+[connection signal="timeout" from="Axe/SpeedUpTimer" to="Axe" method="_speedUp"]
+[connection signal="timeout" from="EndTimer" to="UIManager" method="changescene"]

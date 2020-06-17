@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://bin/Axe.gdns" type="Script" id=1]
+[ext_resource path="res://Art/bijl.png" type="Texture" id=2]
+[ext_resource path="res://bin/RotateMe.gdns" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 12.2162 )
+
+[node name="Axe" type="KinematicBody2D"]
+script = ExtResource( 1 )
+Speed = 5.0
+Extents = Vector2( 32, 32 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.0471794, 0.0471794 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+Rotate_Speed = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]

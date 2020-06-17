@@ -1,0 +1,25 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Art/Background/spaceBg-export1.png" type="Texture" id=1]
+[ext_resource path="res://Art/Background/spaceBg-export2.png" type="Texture" id=2]
+[ext_resource path="res://Art/Background/spaceBg-export3.png" type="Texture" id=3]
+[ext_resource path="res://Art/Background/spaceBg-export4.png" type="Texture" id=4]
+[ext_resource path="res://Art/Background/spaceBg-export5.png" type="Texture" id=5]
+[ext_resource path="res://Art/Background/spaceBg-export6.png" type="Texture" id=6]
+[ext_resource path="res://Art/Background/spaceBg-export7.png" type="Texture" id=7]
+[ext_resource path="res://Art/Background/spaceBg-export8.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "bganim",
+"speed": 5.0
+} ]
+
+[node name="BG" type="AnimatedSprite"]
+scale = Vector2( 0.95346, 1.06454 )
+frames = SubResource( 1 )
+animation = "bganim"
+frame = 7
+playing = true
